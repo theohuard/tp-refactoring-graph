@@ -13,7 +13,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- spring-boot - version java (suffisant, c.f. https://www.baeldung.com/maven-java-version) -->
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 		<!-- spring-boot - main du jar (c.f. https://www.baeldung.com/spring-boot-main-class) -->
 		<start-class>org.acme.graph.Application</start-class>
 		<!-- versions des autres dépendances -->
