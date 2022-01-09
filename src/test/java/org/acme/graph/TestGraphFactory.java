@@ -6,7 +6,8 @@ import org.locationtech.jts.geom.Coordinate;
 
 public class TestGraphFactory {
 
-	
+
+	/*Test*/ 
 	public static Graph createGraph01() {
 		Graph graph = new Graph();
 
@@ -18,7 +19,6 @@ public class TestGraphFactory {
 		graph.createEdge(a,b,"ab");
 		graph.createEdge(b,c,"bc");
 		graph.createEdge(a,d,"ad");
-
 		return graph;
 	}
 }

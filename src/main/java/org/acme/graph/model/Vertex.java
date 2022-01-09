@@ -48,7 +48,9 @@ public class Vertex {
 	 */
 	private boolean visited;
 
-	Vertex() {}
+	Vertex() {
+		
+	}
 
 	public String getId() {
 		return id;
@@ -66,13 +68,13 @@ public class Vertex {
 		this.coordinate = coordinate;
 	}
 
+	public void setCost(double cost) {
+		this.cost = cost;
+	}
+
 	@JsonIgnore
 	public double getCost() {
 		return cost;
-	}
-
-	public void setCost(double cost) {
-		this.cost = cost;
 	}
 
 	public List<Edge> getInEdges() {
@@ -83,13 +85,13 @@ public class Vertex {
 		return outEdges;
 	}
 
+	public void setReachingEdge(Edge reachingEdge) {
+		this.reachingEdge = reachingEdge;
+	}
+	
 	@JsonIgnore
 	public Edge getReachingEdge() {
 		return reachingEdge;
-	}
-
-	public void setReachingEdge(Edge reachingEdge) {
-		this.reachingEdge = reachingEdge;
 	}
 
 	public boolean isVisited() {
@@ -104,4 +106,5 @@ public class Vertex {
 	public String toString() {
 		return id;
 	}
+
 }

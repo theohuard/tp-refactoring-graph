@@ -51,7 +51,7 @@ public class Graph {
 	}
 
 	/**
-	 * Recherche d'un sommet par égalité stricte de coordonnées
+	 * Recherche d'un sommet a partir des coordonnées
 	 * 
 	 * @param coordinate
 	 * @return
@@ -125,6 +125,7 @@ public class Graph {
 		Edge edge = new Edge(source, target);
 		edge.setId(id);
 		this.edges.add(edge);
+
 		return edge;
 	}
 
@@ -133,6 +134,7 @@ public class Graph {
 		edge.setId(id);
 		edge.setGeometry(geometry);
 		this.edges.add(edge);
+
 		return edge;
 	}
 }
