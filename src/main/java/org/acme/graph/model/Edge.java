@@ -38,11 +38,7 @@ public class Edge {
 	 */
 	private LineString geometry;
 
-	public void setGeometry(LineString geometry) {
-		this.geometry = geometry;
-	}
-
-	public Edge(Vertex source, Vertex target) {
+	Edge(Vertex source, Vertex target) {
 		assert source != null;
 		assert target != null;
 		
@@ -99,12 +95,18 @@ public class Edge {
 
 	@JsonSerialize(using = GeometrySerializer.class)
 	public LineString getGeometry() {
-		if (this.geometry != null) return this.geometry;
+		if (this.geometry != null){ 
+			return this.geometry;
+		} 
 		GeometryFactory gf = new GeometryFactory();
 		return gf.createLineString(new Coordinate[] {
 			source.getCoordinate(),
 			target.getCoordinate()
 		});
+	}
+
+	public void setGeometry(LineString geometry) {
+		this.geometry = geometry;
 	}
 
 	@Override

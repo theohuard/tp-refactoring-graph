@@ -1,13 +1,16 @@
 package org.acme.graph;
 
-import org.acme.graph.model.Edge;
 import org.acme.graph.model.Graph;
 import org.acme.graph.model.Vertex;
 import org.locationtech.jts.geom.Coordinate;
 
 public class TestGraphFactory {
 
-	
+	/**
+	 * d / / a--b--c
+	 * 
+	 * @return
+	 */
 	public static Graph createGraph01() {
 		Graph graph = new Graph();
 

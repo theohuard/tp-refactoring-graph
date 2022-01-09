@@ -78,10 +78,7 @@ public class Graph {
 			vertex = findVertex(coordinate);
 		} catch (NotFoundException e) {
 			/* création d'un nouveau sommet car non trouvé */
-			vertex = new Vertex();
-			vertex.setId(Integer.toString(getVertices().size()));
-			vertex.setCoordinate(coordinate);
-			vertices.add(vertex);
+			vertex = createVertex(coordinate, Integer.toString(getVertices().size()));
 		}
 		return vertex;
 	}
@@ -129,20 +126,20 @@ public class Graph {
 		return result;
 	}
 
-	public Vertex createVertex(Coordinate coordinate, String id ){
+	public Vertex createVertex(Coordinate coordinate, String id) {
 		Vertex vertex = new Vertex();
 		vertex.setId(id);
 		vertex.setCoordinate(coordinate);
-		this.vertices.add(vertex) ; 
+		vertices.add(vertex);
 		return vertex;
 	}
 
 	public Edge createEdge(Vertex source, Vertex target, String id) {
-		Edge Edge = new Edge(source, target);
-		Edge.setId(id);
-		this.edges.add(Edge);
+		Edge edge = new Edge(source, target);
+		edge.setId(id);
+		edge.setGeometry(edge.getGeometry());
+		this.edges.add(edge);
 
-		return Edge;
+		return edge;
 	}
-
 }
