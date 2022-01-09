@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.acme.graph.errors.NotFoundException;
 import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.LineString;
 
 /**
  * 
@@ -78,10 +79,7 @@ public class Graph {
 			vertex = findVertex(coordinate);
 		} catch (NotFoundException e) {
 			/* création d'un nouveau sommet car non trouvé */
-			vertex = new Vertex();
-			vertex.setId(Integer.toString(getVertices().size()));
-			vertex.setCoordinate(coordinate);
-			vertices.add(vertex);
+			vertex = createVertex(coordinate, Integer.toString(getVertices().size()));
 		}
 		return vertex;
 	}
@@ -102,14 +100,7 @@ public class Graph {
 	 * @return
 	 */
 	public List<Edge> getInEdges(Vertex vertex) {
-		List<Edge> result = new ArrayList<>();
-		for (Edge candidate : edges) {
-			if (candidate.getTarget() != vertex) {
-				continue;
-			}
-			result.add(candidate);
-		}
-		return result;
+		return vertex.getInEdges();
 	}
 
 	/**
@@ -119,30 +110,29 @@ public class Graph {
 	 * @return
 	 */
 	public List<Edge> getOutEdges(Vertex vertex) {
-		List<Edge> result = new ArrayList<>();
-		for (Edge candidate : edges) {
-			if (candidate.getSource() != vertex) {
-				continue;
-			}
-			result.add(candidate);
-		}
-		return result;
+		return vertex.getOutEdges();
 	}
 
-	public Vertex createVertex(Coordinate coordinate, String id ){
+	public Vertex createVertex(Coordinate coordinate, String id) {
 		Vertex vertex = new Vertex();
 		vertex.setId(id);
 		vertex.setCoordinate(coordinate);
-		this.vertices.add(vertex) ; 
+		vertices.add(vertex);
 		return vertex;
 	}
 
 	public Edge createEdge(Vertex source, Vertex target, String id) {
-		Edge Edge = new Edge(source, target);
-		Edge.setId(id);
-		this.edges.add(Edge);
-
-		return Edge;
+		Edge edge = new Edge(source, target);
+		edge.setId(id);
+		this.edges.add(edge);
+		return edge;
 	}
 
+	public Edge createEdge(Vertex source, Vertex target, String id, LineString geometry) {
+		Edge edge = new Edge(source, target);
+		edge.setId(id);
+		edge.setGeometry(geometry);
+		this.edges.add(edge);
+		return edge;
+	}
 }
